@@ -7,7 +7,6 @@ namespace Challenge.ApplicationService.Services
 {
     public class MerchantApplicationService : IMerchantApplicationService
     {
-
         IMerchantRepository MerchantRepository { get; }
 
         public MerchantApplicationService(IMerchantRepository merchantRepository)
