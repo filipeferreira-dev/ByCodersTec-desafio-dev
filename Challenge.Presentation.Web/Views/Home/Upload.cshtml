@@ -1,0 +1,22 @@
+﻿@model Challenge.Presentation.Web.Models.UploadFileViewModel
+@{
+    ViewData["Title"] = "Upload de arquivo";
+}
+
+
+<h1>Upload de arquivo</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input asp-for="File" type="file" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

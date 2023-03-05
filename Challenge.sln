@@ -28,6 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
+		Dockerfile.web = Dockerfile.web
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -36,6 +37,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceClient", "ServiceClient", "{58E15DBA-8DB2-4626-9081-04E5275ABE48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.ClientConnector", "Challenge.ClientConnector\Challenge.ClientConnector.csproj", "{923F67A1-E0CC-4DFE-B41B-A31251B0E816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.Presentation.Web", "Challenge.Presentation.Web\Challenge.Presentation.Web.csproj", "{9E8F45BA-3F36-4B8B-976D-E8ABDA4A556A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +74,10 @@ Global
 		{923F67A1-E0CC-4DFE-B41B-A31251B0E816}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{923F67A1-E0CC-4DFE-B41B-A31251B0E816}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{923F67A1-E0CC-4DFE-B41B-A31251B0E816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8F45BA-3F36-4B8B-976D-E8ABDA4A556A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8F45BA-3F36-4B8B-976D-E8ABDA4A556A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8F45BA-3F36-4B8B-976D-E8ABDA4A556A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8F45BA-3F36-4B8B-976D-E8ABDA4A556A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +90,7 @@ Global
 		{1C900AD3-1D08-42F1-9CFA-63F2737196C3} = {4143367F-9E5B-4F2E-AE75-10761F2E53B8}
 		{EF51BE73-1685-4220-8807-971A5CC28EE9} = {AEE1485A-563E-4147-99E9-0B379E42DCCE}
 		{923F67A1-E0CC-4DFE-B41B-A31251B0E816} = {58E15DBA-8DB2-4626-9081-04E5275ABE48}
+		{9E8F45BA-3F36-4B8B-976D-E8ABDA4A556A} = {D68B6B57-6006-4850-8454-B84500E336B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A39B1CF9-09D7-4A7E-9379-E5C56E2BEA5A}

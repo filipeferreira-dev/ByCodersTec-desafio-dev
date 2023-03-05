@@ -17,10 +17,9 @@ namespace Challenge.ClientConnector
         {
             using var request = new HttpRequestMessage(HttpMethod.Post, $"/api/upload");
 
-            request.Content = new MultipartFormDataContent
-            {
-                new StreamContent(file)
-            };
+            var content = new MultipartFormDataContent();
+            content.Add(new StreamContent(file), "file", "file.txtr");
+            request.Content = content;
 
             using var response = await Client.SendAsync(request);
         }

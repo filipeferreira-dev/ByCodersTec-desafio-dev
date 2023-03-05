@@ -1,0 +1,41 @@
+﻿@using Challenge.ApplicationService.Messages.Response;
+@using System.Globalization;
+@model IEnumerable<MerchantResponse>;
+@{
+    ViewData["Title"] = "Lojistas";
+
+    var numberFormat = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+    numberFormat.CurrencyNegativePattern = 1;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Merchants</h1>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Proprietário</th>
+                <th scope="col">Quantidade de transações</th>
+                <th scope="col">Saldo</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Owner</td>
+                    <td>@item.Transactions.Count()</td>
+                    <td>@item.Balance.ToString("c", numberFormat)</td>
+                    <td>@Html.ActionLink("Ver Transações","Details", item)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

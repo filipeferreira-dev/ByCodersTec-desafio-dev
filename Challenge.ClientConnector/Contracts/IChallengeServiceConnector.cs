@@ -6,6 +6,7 @@ namespace Challenge.ClientConnector.Contracts
     {
         Task ImportAsync(Stream file);
 
+
         Task<IEnumerable<MerchantResponse>> GetAllMerchants();
     }
 }

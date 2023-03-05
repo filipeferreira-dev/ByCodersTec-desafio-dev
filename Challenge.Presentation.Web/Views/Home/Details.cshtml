@@ -1,0 +1,39 @@
+﻿@using Challenge.ApplicationService.Messages.Response;
+@using System.Globalization;
+@model MerchantResponse;
+@{
+    ViewData["Title"] = "Transações";
+}
+
+<div class="text-center">
+    <h1 class="display-1">Transações</h1>
+    <h4 class="display-4">@Model.Name</h4>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Data</th>
+                <th scope="col">Valor</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Cartão</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Transactions)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Type</td>
+                    <td>@item.Date</td>
+                    <td>@item.Amount.ToString("c")</td>
+                    <td>@item.Document</td>
+                    <td>@item.Card</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
