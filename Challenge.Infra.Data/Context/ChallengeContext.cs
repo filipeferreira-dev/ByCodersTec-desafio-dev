@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Challenge.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Challenge.Infra.Data.Context
 {
@@ -8,5 +9,9 @@ namespace Challenge.Infra.Data.Context
         {
             Database.Migrate();
         }
+
+        DbSet<Merchant> Merchants { get; set; }
+
+        DbSet<Transaction> Transactions { get; set; }
     }
 }

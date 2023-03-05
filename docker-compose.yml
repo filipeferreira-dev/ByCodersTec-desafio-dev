@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  api:
+    build: ./
+    ports:
+      - "5000:80"
+    environment:
+     ConnectionStrings__DefaultConnection: "Server=database;User Id=sa;Password=yourStrong(!)Password;Database=Challange;Encrypt=False"
+    depends_on:
+     - database
+
+  database:
+    container_name: database
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "yourStrong(!)Password"
+      ACCEPT_EULA: "Y"

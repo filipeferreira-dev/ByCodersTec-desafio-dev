@@ -24,6 +24,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.Domain.Test", "Challenge.Domain.Test\Challenge.Domain.Test.csproj", "{1C900AD3-1D08-42F1-9CFA-63F2737196C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BADB18D1-5105-48C9-BA3F-E1898D6DF357}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge.ApplicationService.Messages", "Challenge.ApplicationService.Messages\Challenge.ApplicationService.Messages.csproj", "{EF51BE73-1685-4220-8807-971A5CC28EE9}"
 EndProject
