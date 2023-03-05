@@ -12,6 +12,7 @@ namespace Challenge.Presentation.Api.Extensions
             //Configure dependencies
             services.AddTransient<IImporterApplicationService, ImporterApplicationService>();
             services.AddTransient<IMerchantRepository, MerchantRepository>();
+            services.AddTransient<IMerchantApplicationService, MerchantApplicationService>();
         }
     }
 }
