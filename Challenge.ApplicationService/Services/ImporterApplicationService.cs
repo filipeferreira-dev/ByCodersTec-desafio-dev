@@ -17,11 +17,21 @@ namespace Challenge.ApplicationService.Services
 
         public async Task ImportAsync(Stream file)
         {
-            var merchants = ProcessFileAsync(file);
-            await MerchantRepository.AddRangeAsync(merchants);
+            try
+            {
+                var merchants = ProcessFileAsync(file);
+                await MerchantRepository.AddRangeAsync(merchants);
+            }
+            catch
+            {
+                //Aqui poderia ser aplicado algum tipo de log eu um retorno de com a mensagem de erro
+                //para sem manipulado na controller e retorna uma bad request
+                //Ou subir um excption personalizada que já será captura pelo middleware de exception
+                //e retornar de lá uma mensagem para o usuário
+            }
         }
 
-        public IEnumerable<Merchant> ProcessFileAsync(Stream file)
+        private IEnumerable<Merchant> ProcessFileAsync(Stream file)
         {
             var streamReader = new StreamReader(file);
             var line = streamReader.ReadLine();
@@ -30,25 +40,31 @@ namespace Challenge.ApplicationService.Services
 
             while (line != null)
             {
-                var type = (TransactionTypeEnum)Convert.ToInt32(line.Substring(0, 1));
-                var date = line.Substring(1, 8);
-                var valor = Convert.ToDecimal(line.Substring(9, 10)) / 100;
-                var document = line.Substring(19, 11);
-                var card = line.Substring(30, 12);
-                var hora = line.Substring(42, 6);
-                var owner = line.Substring(48, 14).Trim();
-                var merchantName = line.Substring(62).Trim();
+                try
+                {
+                    var type = (TransactionTypeEnum)Convert.ToInt32(line.Substring(0, 1));
+                    var date = line.Substring(1, 8);
+                    var valor = Convert.ToDecimal(line.Substring(9, 10)) / 100;
+                    var document = line.Substring(19, 11);
+                    var card = line.Substring(30, 12);
+                    var hora = line.Substring(42, 6);
+                    var owner = line.Substring(48, 14).Trim();
+                    var merchantName = line.Substring(62).Trim();
 
-                var hasMerchant = merchants.Any(m => m.Name == merchantName);
+                    var hasMerchant = merchants.Any(m => m.Name == merchantName);
 
-                var merchant = hasMerchant ? merchants.First(m => m.Name == merchantName) : new Merchant(merchantName, owner);
+                    var merchant = hasMerchant ? merchants.First(m => m.Name == merchantName) : new Merchant(merchantName, owner);
 
-                var transaction = new Transaction(type, DateTime.ParseExact(date + hora, "yyyyMMddHHmmss", CultureInfo.InvariantCulture), valor, document, card);
+                    var transaction = new Transaction(type, DateTime.ParseExact(date + hora, "yyyyMMddHHmmss", CultureInfo.InvariantCulture), valor, document, card);
 
-                merchant.AddTransaction(transaction);
+                    merchant.AddTransaction(transaction);
 
-                if (!hasMerchant) merchants.Add(merchant);
-                line = streamReader.ReadLine();
+                    if (!hasMerchant) merchants.Add(merchant);
+                }
+                finally
+                {
+                    line = streamReader.ReadLine();
+                }
             }
 
             return merchants;
