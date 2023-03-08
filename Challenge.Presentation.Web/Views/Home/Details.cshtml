@@ -3,6 +3,9 @@
 @model MerchantResponse;
 @{
     ViewData["Title"] = "Transações";
+
+    var numberFormat = (NumberFormatInfo)CultureInfo.GetCultureInfo("pt-br").NumberFormat.Clone();
+    numberFormat.CurrencyNegativePattern = 1;
 }
 
 <div class="text-center">
@@ -29,7 +32,7 @@
                     <td>@item.Id</td>
                     <td>@item.Type</td>
                     <td>@item.Date</td>
-                    <td>@item.Amount.ToString("c")</td>
+                    <td>@item.Amount.ToString("c", numberFormat)</td>
                     <td>@item.Document</td>
                     <td>@item.Card</td>
                 </tr>

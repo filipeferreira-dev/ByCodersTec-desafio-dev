@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Lojistas";
 
-    var numberFormat = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+    var numberFormat = (NumberFormatInfo)CultureInfo.GetCultureInfo("pt-br").NumberFormat.Clone();
     numberFormat.CurrencyNegativePattern = 1;
 }
 
@@ -33,7 +33,7 @@
                     <td>@item.Owner</td>
                     <td>@item.Transactions.Count()</td>
                     <td>@item.Balance.ToString("c", numberFormat)</td>
-                    <td>@Html.ActionLink("Ver Transações","Details", item)</td>
+                    <td>@Html.ActionLink("Ver Transações","Details", "Home", new { id = item.Id })</td>
                 </tr>
             }
         </tbody>

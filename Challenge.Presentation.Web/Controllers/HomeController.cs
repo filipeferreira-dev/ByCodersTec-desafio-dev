@@ -19,7 +19,7 @@ namespace Challenge.Presentation.Web.Controllers
         }
 
         public async Task<IActionResult> Index()
-         {
+        {
             var merchants = await ChallengeServiceConnector.GetAllMerchants();
             _merchants = merchants;
 
